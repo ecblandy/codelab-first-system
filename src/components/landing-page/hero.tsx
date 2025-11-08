@@ -6,20 +6,21 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 py-20 bg-[#F5F5F5]"
+      className="relative flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 py-24 bg-[#423E37]"
     >
-      {/* Texto da Hero */}
-      <div className="md:w-1/2 flex flex-col gap-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#423E37] leading-tight animate-fadeIn">
+      {/* Texto Hero */}
+      <div className="md:w-1/2 flex flex-col gap-6 text-white">
+        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight animate-fadeIn">
           Bem-vindo à <span className="text-[#C8F904]">Codelab</span>
         </h1>
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed animate-fadeIn delay-200">
-          Transformamos ideias em soluções digitais incríveis. Do design ao
-          desenvolvimento, estamos aqui para levar sua empresa ao próximo nível.
+        <p className="text-gray-300 text-lg md:text-xl leading-relaxed animate-fadeIn delay-200">
+          Transformamos ideias em soluções digitais de alto impacto. Do design
+          ao desenvolvimento, entregamos experiências completas que impulsionam
+          o crescimento da sua empresa.
         </p>
 
         {/* Botões CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-4 animate-fadeIn delay-400">
+        <div className="flex flex-col sm:flex-row gap-4 mt-6 animate-fadeIn delay-400">
           <a
             href="#about"
             className="bg-[#C8F904] text-[#423E37] px-6 py-3 rounded-lg font-semibold text-lg hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-[#C8F904]"
@@ -27,25 +28,28 @@ export default function Hero() {
             Conheça mais
           </a>
           <a
-            href="https://wa.me/5591999999999"
+            href="https://wa.me/5571994027893"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#423E37] text-[#C8F904] px-6 py-3 rounded-lg font-semibold text-lg hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-[#C8F904]"
+            className="bg-transparent border border-[#C8F904] text-[#C8F904] px-6 py-3 rounded-lg font-semibold text-lg hover:bg-[#C8F904] hover:text-[#423E37] transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-[#C8F904]"
           >
             Fale no WhatsApp
           </a>
         </div>
       </div>
 
-      {/* Imagem da Hero */}
-      <div className="md:w-1/2 mb-12 md:mb-0 flex justify-center md:justify-end animate-fadeIn delay-600">
-        <Image
-          src="/assets/images/hero-image.png"
-          alt="Ilustração Codelab"
-          width={500}
-          height={400}
-          className="rounded-xl shadow-xl"
-        />
+      {/* GIF Hero - novo estilo */}
+      <div className="md:w-1/2 mb-12 md:mb-0 flex justify-center md:justify-end relative animate-fadeIn delay-600">
+        <div className="relative w-[400px] h-[350px] overflow-hidden rounded-3xl">
+          <Image
+            src="/assets/gifs/hand-coding.gif"
+            alt="Ilustração Codelab"
+            fill
+            className="object-cover animate-gifFloat"
+          />
+          {/* Glow sutil */}
+          <div className="absolute inset-0 rounded-3xl shadow-[0_0_60px_rgba(200,199,4,0.4)] pointer-events-none"></div>
+        </div>
       </div>
 
       {/* Animações simples */}
@@ -68,6 +72,19 @@ export default function Hero() {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        /* leve flutuação para GIF */
+        .animate-gifFloat {
+          animation: float 3s ease-in-out infinite alternate;
+        }
+        @keyframes float {
+          0% {
+            transform: translateY(0) scale(1);
+          }
+          100% {
+            transform: translateY(-15px) scale(1.02);
           }
         }
       `}</style>

@@ -1,3 +1,9 @@
-export default function Home() {
-  return <div></div>;
+import Hero from "@/components/landing-page/hero";
+
+export default function LandingPage() {
+  return (
+    <div>
+      <Hero />
+    </div>
+  );
 }

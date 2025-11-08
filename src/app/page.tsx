@@ -1,7 +1,8 @@
 import Hero from "@/components/landing-page/hero";
 import HistorySection from "@/components/landing-page/history";
 import ProcessSection from "@/components/landing-page/process";
-import TeamSection from "@/components/team";
+import FeaturedProjects from "@/components/landing-page/projects/featured-projects";
+import TeamSection from "@/components/landing-page/team";
 
 export default function LandingPage() {
   return (
@@ -10,6 +11,7 @@ export default function LandingPage() {
       <HistorySection />
       <TeamSection />
       <ProcessSection />
+      <FeaturedProjects />
     </div>
   );
 }

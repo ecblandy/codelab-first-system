@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/landing-page/header/header";
+import Footer from "@/components/landing-page/footer";
 
 export const metadata: Metadata = {
   title: "Codelab - Transformamos ideias em produtos digitais",
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body className={`antialiased`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

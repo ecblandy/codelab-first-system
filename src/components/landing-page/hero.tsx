@@ -1,6 +1,21 @@
 "use client";
 
-import Image from "next/image";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+
+// Importação dinâmica do Canvas (evita SSR)
+const CodeCubeScene = dynamic(() => import("./code-cube"), {
+  ssr: false,
+});
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.8 },
+  }),
+};
 
 export default function Hero() {
   return (
@@ -10,17 +25,34 @@ export default function Hero() {
     >
       {/* Texto Hero */}
       <div className="md:w-1/2 flex flex-col gap-6 text-white">
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight animate-fadeIn">
+        <motion.h1
+          className="text-4xl md:text-5xl font-extrabold leading-tight"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+        >
           Bem-vindo à <span className="text-[#C8F904]">Codelab</span>
-        </h1>
-        <p className="text-gray-300 text-lg md:text-xl leading-relaxed animate-fadeIn delay-200">
+        </motion.h1>
+
+        <motion.p
+          className="text-gray-300 text-lg md:text-xl leading-relaxed"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          custom={1}
+        >
           Transformamos ideias em soluções digitais de alto impacto. Do design
           ao desenvolvimento, entregamos experiências completas que impulsionam
           o crescimento da sua empresa.
-        </p>
+        </motion.p>
 
-        {/* Botões CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-6 animate-fadeIn delay-400">
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 mt-6"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          custom={2}
+        >
           <a
             href="#about"
             className="bg-[#C8F904] text-[#423E37] px-6 py-3 rounded-lg font-semibold text-lg hover:scale-105 transition-transform shadow-md focus:outline-none focus:ring-2 focus:ring-[#C8F904]"
@@ -35,59 +67,21 @@ export default function Hero() {
           >
             Fale no WhatsApp
           </a>
-        </div>
+        </motion.div>
       </div>
 
-      {/* GIF Hero - novo estilo */}
-      <div className="md:w-1/2 mb-12 md:mb-0 flex justify-center md:justify-end relative animate-fadeIn delay-600">
-        <div className="relative w-[400px] h-[350px] overflow-hidden rounded-3xl">
-          <Image
-            src="/assets/gifs/hand-coding.gif"
-            alt="Ilustração Codelab"
-            fill
-            className="object-cover animate-gifFloat"
-          />
-          {/* Glow sutil */}
-          <div className="absolute inset-0 rounded-3xl shadow-[0_0_60px_rgba(200,199,4,0.4)] pointer-events-none"></div>
+      {/* Canvas Three.js */}
+      <motion.div
+        className="md:w-1/2 mb-12 md:mb-0 flex justify-center md:justify-end relative"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+        custom={3}
+      >
+        <div className="relative w-full h-[600px] rounded-3xl overflow-hidden ">
+          <CodeCubeScene />-
         </div>
-      </div>
-
-      {/* Animações simples */}
-      <style jsx>{`
-        .animate-fadeIn {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeIn 0.8s forwards;
-        }
-        .animate-fadeIn.delay-200 {
-          animation-delay: 0.2s;
-        }
-        .animate-fadeIn.delay-400 {
-          animation-delay: 0.4s;
-        }
-        .animate-fadeIn.delay-600 {
-          animation-delay: 0.6s;
-        }
-        @keyframes fadeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        /* leve flutuação para GIF */
-        .animate-gifFloat {
-          animation: float 3s ease-in-out infinite alternate;
-        }
-        @keyframes float {
-          0% {
-            transform: translateY(0) scale(1);
-          }
-          100% {
-            transform: translateY(-15px) scale(1.02);
-          }
-        }
-      `}</style>
+      </motion.div>
     </section>
   );
 }

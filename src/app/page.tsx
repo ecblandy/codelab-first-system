@@ -3,6 +3,7 @@ import HistorySection from "@/components/landing-page/history";
 import PlansSection from "@/components/landing-page/plans";
 import ProcessSection from "@/components/landing-page/process";
 import FeaturedProjects from "@/components/landing-page/projects/featured-projects";
+import ServicesSection from "@/components/landing-page/services";
 import TeamSection from "@/components/landing-page/team";
 
 export default function LandingPage() {
@@ -14,6 +15,7 @@ export default function LandingPage() {
       <ProcessSection />
       <FeaturedProjects />
       <PlansSection />
+      <ServicesSection />
     </div>
   );
 }

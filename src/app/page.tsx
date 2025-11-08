@@ -5,6 +5,7 @@ import ProcessSection from "@/components/landing-page/process";
 import FeaturedProjects from "@/components/landing-page/projects/featured-projects";
 import ServicesSection from "@/components/landing-page/services";
 import TeamSection from "@/components/landing-page/team";
+import TestimonialsSection from "@/components/landing-page/testimonials";
 
 export default function LandingPage() {
   return (
@@ -16,6 +17,7 @@ export default function LandingPage() {
       <FeaturedProjects />
       <PlansSection />
       <ServicesSection />
+      <TestimonialsSection />
     </div>
   );
 }

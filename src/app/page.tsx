@@ -1,4 +1,5 @@
 import ContactSection from "@/components/landing-page/contact";
+import FAQSection from "@/components/landing-page/faq";
 import Hero from "@/components/landing-page/hero";
 import HistorySection from "@/components/landing-page/history";
 import PlansSection from "@/components/landing-page/plans";
@@ -20,6 +21,7 @@ export default function LandingPage() {
       <ServicesSection />
       <TestimonialsSection />
       <ContactSection />
+      <FAQSection />
     </div>
   );
 }

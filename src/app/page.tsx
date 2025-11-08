@@ -1,3 +1,4 @@
+import ContactSection from "@/components/landing-page/contact";
 import Hero from "@/components/landing-page/hero";
 import HistorySection from "@/components/landing-page/history";
 import PlansSection from "@/components/landing-page/plans";
@@ -18,6 +19,7 @@ export default function LandingPage() {
       <PlansSection />
       <ServicesSection />
       <TestimonialsSection />
+      <ContactSection />
     </div>
   );
 }

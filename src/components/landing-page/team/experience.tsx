@@ -16,47 +16,64 @@ export default function ExperienceSection({ experience }: Props) {
         Experiência Profissional
       </h3>
       <ul className="space-y-6">
-        {experience.map((exp, idx) => (
-          <motion.li
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: idx * 0.15 }}
-            className="bg-[#2C2C2C] text-gray-100 rounded-2xl p-6 shadow-xl border-l-4 border-[#C8F904] hover:shadow-2xl transition-shadow duration-300"
-          >
-            {/* Cargo e empresa */}
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-              <div>
-                <h4 className="text-xl md:text-2xl font-semibold text-[#C8F904]">
-                  {exp.position}
-                </h4>
-                <p className="text-gray-300 mt-1">{exp.company}</p>
-              </div>
-              <span className="text-[#C8F904] mt-2 md:mt-0">{exp.period}</span>
-            </div>
+        {experience.map((exp, idx) => {
+          // Junta todas as stacks em um array único
+          const allStacks: string[] = exp.stacks
+            ? [
+                ...(exp.stacks.skills || []),
+                ...(exp.stacks.frameworks || []),
+                ...(exp.stacks.languages || []),
+                ...(exp.stacks.api || []),
+                ...(exp.stacks.testing || []),
+                ...(exp.stacks.cssHtml || []),
+                ...(exp.stacks.other || []),
+              ]
+            : [];
 
-            {/* Descrição detalhada */}
-            {exp.description && (
-              <p className="mt-4 text-gray-200 text-sm md:text-base leading-relaxed">
-                {exp.description}
-              </p>
-            )}
-
-            {/* Stacks utilizadas */}
-            {exp.stacks && exp.stacks.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {exp.stacks.map((stack) => (
-                  <span
-                    key={stack}
-                    className="bg-[#423E37] text-[#C8F904] px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:scale-105 transition-transform duration-300"
-                  >
-                    {stack}
-                  </span>
-                ))}
+          return (
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              className="bg-[#2C2C2C] text-gray-100 rounded-2xl p-6 shadow-xl border-l-4 border-[#C8F904] hover:shadow-2xl transition-shadow duration-300"
+            >
+              {/* Cargo e empresa */}
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div>
+                  <h4 className="text-xl md:text-2xl font-semibold text-[#C8F904]">
+                    {exp.position}
+                  </h4>
+                  <p className="text-gray-300 mt-1">{exp.company}</p>
+                </div>
+                <span className="text-[#C8F904] mt-2 md:mt-0">
+                  {exp.period}
+                </span>
               </div>
-            )}
-          </motion.li>
-        ))}
+
+              {/* Descrição detalhada */}
+              {exp.description && (
+                <p className="mt-4 text-gray-200 text-sm md:text-base leading-relaxed">
+                  {exp.description}
+                </p>
+              )}
+
+              {/* Stacks utilizadas */}
+              {allStacks.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {allStacks.map((stack) => (
+                    <span
+                      key={stack}
+                      className="bg-[#423E37] text-[#C8F904] px-3 py-1 rounded-full text-sm font-medium shadow-sm hover:scale-105 transition-transform duration-300"
+                    >
+                      {stack}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </motion.li>
+          );
+        })}
       </ul>
     </div>
   );

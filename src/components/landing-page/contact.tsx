@@ -5,7 +5,7 @@ import { Mail, Phone, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 // Para o reCAPTCHA v2, você precisará do site key do Google
-const RECAPTCHA_SITE_KEY = "SUA_SITE_KEY_AQUI";
+// const RECAPTCHA_SITE_KEY = "SUA_SITE_KEY_AQUI";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({

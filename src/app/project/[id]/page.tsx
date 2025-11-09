@@ -7,14 +7,24 @@ import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 
-const projectData = {
-  "sistema-pontos": {
+type Project = {
+  title: string;
+  type: string;
+  description: string;
+  figmaUrl: string;
+  siteUrl?: string;
+  images: string[];
+};
+
+const projectData: Record<string, Project> = {
+  fidnovax: {
     title: "FIDNOVAX – Sistema de Pontos para Lojistas",
     type: "Desenvolvido do zero",
     description:
       "Plataforma web onde lojistas podem cadastrar clientes, registrar compras e oferecer recompensas. Inclui autenticação, dashboards, QR Codes e painel administrativo. O sistema foi planejado do zero com foco em escalabilidade e experiência do usuário, com telas modernas e intuitivas criadas pela equipe de UX/UI da CodeLab.",
     figmaUrl:
       "https://www.figma.com/design/aBKm8nYvecEjyPAbNhtrzk/FIDNOVAX---2?node-id=0-1&p=f&t=EYVcbgRE2e9CDpZk-0",
+    siteUrl: "https://fidnovax.com.br/",
     images: [
       "/assets/images/fidnovax-login.svg",
       "/assets/images/fidnovax-login-2.svg",
@@ -36,28 +46,33 @@ const projectData = {
       "/assets/images/fidnovax-dashboard-admin-4.svg",
     ],
   },
-  "dashboard-gestao": {
-    title: "Dashboard de Gestão Empresarial",
+  "fec-safe": {
+    title: "FEC Safe - Plataforma Web Completa",
     type: "Desenvolvido do zero",
     description:
       "Sistema completo para visualização de métricas e indicadores de performance de empresas, com gráficos interativos e controle de acessos.",
-    figmaUrl: "https://www.figma.com/file/EXEMPLO_LINK_DASHBOARD",
+    figmaUrl:
+      "https://www.figma.com/design/8U7cL1HjGyEachHKYLTxts/FEC-Safe?node-id=10-1280&p=f",
+    siteUrl: "https://fecrental.com/",
     images: [
-      "/images/projects/dashboard1.jpg",
-      "/images/projects/dashboard2.jpg",
-      "/images/projects/dashboard3.jpg",
+      "/assets/images/fec-dashboard.jpeg",
+      "/assets/images/fec-equipamentos.svg",
+      "/assets/images/fec-registro.svg",
+      "/assets/images/fec-contratos.svg",
     ],
   },
-  "refatoracao-blog": {
-    title: "Refatoração de Blog Corporativo",
-    type: "Refatoração de tela e funcionalidades",
+  arktech: {
+    title: "Arktech - Site Institucional com Blog",
+    type: "Desenvolvido do zero",
     description:
-      "Refatoramos completamente o layout e o código do blog, melhorando SEO, performance e tornando a experiência responsiva em todos os dispositivos.",
-    figmaUrl: "https://www.figma.com/file/EXEMPLO_LINK_REDESIGN_BLOG",
+      "A Arktech, empresa sediada na Inglaterra, precisava de um site institucional moderno com área de blog. A CodeLab desenvolveu uma plataforma leve, responsiva e otimizada para SEO, garantindo alta performance, acessibilidade e uma presença digital profissional no mercado europeu.",
+    figmaUrl:
+      "https://www.figma.com/design/UOI1ylluP0QR1H9J7zmHyj/Projetos?node-id=225-2&p=f&t=WZPSuMxxAHIVbQIL-0",
     images: [
-      "/images/projects/blog-before.jpg",
-      "/images/projects/blog-after.jpg",
-      "/images/projects/blog-dashboard.jpg",
+      "/assets/images/arktech-home.svg",
+      "/assets/images/arktech-about.svg",
+      "/assets/images/arktech-services.svg",
+      "/assets/images/arktech-blog.svg",
     ],
   },
 };
@@ -91,20 +106,36 @@ export default function ProjectPage() {
         description={project.description}
       />
 
-      {/* Botão Figma */}
-      {project.figmaUrl && (
-        <motion.a
-          href={project.figmaUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.05, y: -2 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center justify-center gap-2 bg-[#C8F904] text-[#1A1A1A] font-semibold mx-auto w-fit px-6 py-3 rounded-xl shadow-lg hover:bg-[#D8FF32] transition-colors mb-12"
-        >
-          Ver no Figma
-          <ArrowUpRight size={18} />
-        </motion.a>
-      )}
+      {/* Botões de ação */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {project.figmaUrl && (
+          <motion.a
+            href={project.figmaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl shadow-lg font-semibold text-[#1A1A1A] bg-[#C8F904] hover:bg-[#D8FF32] transition-colors min-h-[50px]"
+          >
+            Ver no Figma
+            <ArrowUpRight size={18} />
+          </motion.a>
+        )}
+
+        {project.siteUrl && (
+          <motion.a
+            href={project.siteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl shadow-lg font-semibold text-[#C8F904] bg-[#423E37] hover:bg-[#323030] transition-colors min-h-[50px]"
+          >
+            Ver site real
+            <ArrowUpRight size={18} />
+          </motion.a>
+        )}
+      </div>
 
       {/* Galeria de imagens */}
       <ImageGallery images={visibleImages} />
@@ -121,7 +152,7 @@ export default function ProjectPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => setVisibleCount((prev) => prev + 6)}
-            className="px-6 py-3 bg-[#423E37] text-[#C8F904] font-semibold rounded-xl hover:bg-[#323030] transition-all shadow-md"
+            className="px-6 py-3 bg-[#423E37] text-[#C8F904] font-semibold rounded-xl hover:bg-[#323030] transition-all shadow-md min-h-[50px]"
           >
             Ver mais
           </motion.button>

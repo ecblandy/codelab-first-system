@@ -3,32 +3,33 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    id: "sistema-pontos",
+    id: "fidnovax",
     title: "FIDNOVAX — Sistema de Pontos para Lojistas",
     type: "Desenvolvido do zero",
     description:
       "Plataforma completa onde clientes acumulam pontos e trocam por recompensas. Inclui painel do lojista, área do cliente e dashboard administrativo. Desenvolvido do zero pela CodeLab.",
-    image: "/assets/images/fidnovax-landing.png",
+    image: "/assets/images/fidnovax-mockup.svg",
   },
   {
-    id: "dashboard-gestao",
-    title: "Dashboard de Gestão Empresarial",
+    id: "fec-safe",
+    title: "FEC Safe - Plataforma Web Completa",
     type: "Desenvolvido do zero",
     description:
-      "Sistema web criado para automatizar processos internos e facilitar o acompanhamento de métricas em tempo real. Interface moderna, com gráficos e autenticação segura.",
-    image: "/images/projects/dashboard.jpg",
+      "Plataforma criada para a FEC, composta por uma landing page institucional moderna e um dashboard de gestão completo. O sistema permite o controle de equipamentos, manutenções, registros diários e contratos, oferecendo automação de processos internos e acompanhamento em tempo real. Desenvolvido com foco em performance, segurança e experiência do usuário.",
+    image: "/assets/images/fec-mockup.svg",
   },
+
   {
-    id: "refatoracao-blog",
-    title: "Refatoração de Blog Corporativo",
-    type: "Refatoração de tela e funcionalidades",
+    id: "arktech",
+    title: "Arktech - Site Institucional com Blog",
+    type: "Desenvolvido do zero",
     description:
-      "Melhoria de performance e acessibilidade em um blog institucional. A CodeLab otimizou SEO, layout e carregamento de imagens, além de reestruturar o código frontend.",
-    image: "/images/projects/blog.jpg",
+      "A Arktech, empresa sediada na Inglaterra, precisava de um site institucional moderno com área de blog. A CodeLab desenvolveu uma plataforma leve, responsiva e otimizada para SEO, garantindo alta performance, acessibilidade e uma presença digital profissional no mercado europeu.",
+    image: "/assets/images/arktech-mockup.svg",
   },
 ];
 

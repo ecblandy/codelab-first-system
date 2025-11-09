@@ -4,30 +4,51 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    title: "Plano Essencial",
-    price: "R$149/mês",
-    yearlyPrice: "R$1.490/ano (economize R$298)",
+    title: "Plano Básico",
+    price: "R$70/mês",
+    yearlyPrice: "R$700/ano (economize R$140)",
     description:
-      "Ideal para quem precisa de suporte básico, correções e pequenas melhorias de interface.",
+      "Ideal para quem precisa apenas de suporte técnico e segurança do sistema.",
     features: [
-      "Correção de bugs e ajustes visuais",
-      "Atualizações de segurança",
-      "Suporte via WhatsApp e e-mail",
+      "Suporte técnico via WhatsApp e e-mail",
+      "Correção de falhas e quedas no sistema",
+      "Ajustes de VPS e segurança",
+      "Backup semanal automático incluso",
+      "Restauração sob demanda (1x por mês)",
+    ],
+  },
+  {
+    title: "Plano Essencial",
+    price: "R$140/mês",
+    yearlyPrice: "R$1.400/ano (economize R$280)",
+    highlight: true,
+    bestValue: true,
+    description:
+      "Perfeito para empresas que desejam estabilidade, atualizações e pequenas melhorias contínuas.",
+    features: [
+      "Tudo do plano Básico",
+      "Novas funcionalidades pequenas (ex: filtros, campos, formulários)",
+      "Ajustes visuais e melhorias de usabilidade",
+      "Correção de bugs não críticos",
+      "Backup diário automático incluso",
+      "Atualização de bibliotecas e dependências",
+      "Tempo de resposta até 12h úteis",
     ],
   },
   {
     title: "Plano Profissional",
     price: "R$299/mês",
     yearlyPrice: "R$2.990/ano (economize R$598)",
-    highlight: true,
-    bestValue: true,
     description:
-      "Perfeito para empresas que precisam de novas funcionalidades, performance e acompanhamento constante.",
+      "Ideal para negócios em crescimento que precisam de novas páginas, integrações e desempenho avançado.",
     features: [
       "Tudo do plano Essencial",
-      "Novas funcionalidades sob demanda",
-      "Revisões mensais de performance",
-      "Atendimento prioritário",
+      "Criação de novas páginas e módulos",
+      "Integrações externas (WhatsApp, Telegram, Asaas, APIs)",
+      "Análises de desempenho trimestrais",
+      "Gestão de dados e segurança avançada",
+      "Backup diário com retenção de 15 dias",
+      "Tempo de resposta até 6h úteis",
     ],
   },
   {
@@ -35,12 +56,16 @@ const plans = [
     price: "R$499/mês",
     yearlyPrice: "R$4.990/ano (economize R$998)",
     description:
-      "Para quem busca suporte completo, inclusive emergencial e acompanhamento contínuo do sistema.",
+      "Para quem busca o máximo em qualidade, inovação e acompanhamento completo no sistema.",
     features: [
       "Tudo do plano Profissional",
+      "Recriação da identidade visual a cada 2 anos",
+      "Redesign total do sistema a cada 2 anos",
+      "Animações personalizadas (transições, microinterações)",
+      "Relatórios mensais de evolução",
       "Atendimento emergencial 24h",
-      "Reuniões quinzenais de evolução",
-      "Hospedagem e deploy inclusos",
+      "Backup com retenção de 30 dias",
+      "Auditorias de segurança semestrais",
     ],
   },
 ];
@@ -51,7 +76,7 @@ export default function PlansSection() {
       id="plans"
       className="relative bg-[#C8F904] text-[#1A1A1A] py-24 px-6 overflow-hidden"
     >
-      {/* Fundo animado sutil */}
+      {/* Fundo animado */}
       <motion.div
         animate={{
           backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
@@ -136,7 +161,7 @@ export default function PlansSection() {
               </ul>
             </div>
 
-            {/* Botões mensais e anuais */}
+            {/* Botões */}
             <div className="mt-8 flex flex-col gap-3">
               <motion.button
                 whileHover={{ scale: 1.05 }}

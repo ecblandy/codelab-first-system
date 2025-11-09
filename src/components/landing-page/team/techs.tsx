@@ -8,23 +8,14 @@ interface Props {
 }
 
 export default function TechsSection({ member }: Props) {
-  if (!member.experience && !member.mostUsedTechs) return null;
+  if (!member.allStack || member.allStack.length === 0) return null;
 
-  // Coletar todas as stacks de todas as experiências
-  const allStacks: string[] = [];
-
-  member.experience?.forEach((exp) => {
-    Object.values(exp.stacks || {}).forEach((stackArray) => {
-      stackArray?.forEach((stack) => {
-        if (!allStacks.includes(stack)) allStacks.push(stack);
-      });
-    });
-  });
-
-  // Adicionar as mais usadas (mostUsedTechs)
-  member.mostUsedTechs?.forEach((tech) => {
-    if (!allStacks.includes(tech)) allStacks.push(tech);
-  });
+  // Colocar as tecnologias mais usadas no topo
+  const mostUsedTechs = member.mostUsedTechs || [];
+  const combinedStacks: string[] = [
+    ...mostUsedTechs,
+    ...member.allStack.filter((tech) => !mostUsedTechs.includes(tech)),
+  ];
 
   return (
     <motion.div
@@ -38,7 +29,7 @@ export default function TechsSection({ member }: Props) {
       </h3>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {allStacks.map((tech, idx) => (
+        {combinedStacks.map((tech, idx) => (
           <motion.div
             key={idx}
             whileHover={{ scale: 1.05, y: -2 }}

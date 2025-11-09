@@ -47,6 +47,7 @@ export interface TeamMember {
   }[];
   route: string;
   mostUsedTechs?: string[]; // Lista das tecnologias mais usadas pelo usuário
+  allStack?: string[];
 }
 
 export const teamMembers = [vinicius, humberto, thais];

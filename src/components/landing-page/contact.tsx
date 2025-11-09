@@ -56,7 +56,10 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative bg-[#1A1A1A] text-white py-32 px-6 overflow-hidden">
+    <section
+      id="contact"
+      className="relative bg-[#1A1A1A] text-white py-32 px-6 overflow-hidden"
+    >
       {/* Fundo animado */}
       <motion.div
         animate={{

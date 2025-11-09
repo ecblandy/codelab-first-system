@@ -170,8 +170,8 @@ export default function HeaderProfile({ member }: HeaderProps) {
           </motion.div>
         )}
 
-        {/* STACKS */}
-        {member.stacks && member.stacks.length > 0 && (
+        {/* TECNOLOGIAS MAIS USADAS */}
+        {member.mostUsedTechs && member.mostUsedTechs.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -183,13 +183,13 @@ export default function HeaderProfile({ member }: HeaderProps) {
             </span>
 
             <div className="flex flex-wrap gap-3">
-              {member.stacks.map((stack) => (
+              {member.mostUsedTechs.map((tech) => (
                 <motion.span
-                  key={stack}
+                  key={tech}
                   whileHover={{ scale: 1.05 }}
                   className="bg-[#423E37] hover:bg-[#323030] shadow-md text-[#C8F904] px-4 py-2 rounded-lg font-semibold transition-transform duration-300"
                 >
-                  {stack}
+                  {tech}
                 </motion.span>
               ))}
             </div>

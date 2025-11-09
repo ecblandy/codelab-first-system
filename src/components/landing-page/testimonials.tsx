@@ -26,7 +26,10 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative bg-white text-[#1A1A1A] py-24 px-6 overflow-hidden">
+    <section
+      id="testimonials"
+      className="relative bg-white text-[#1A1A1A] py-24 px-6 overflow-hidden"
+    >
       {/* Fundo animado sutil */}
       <motion.div
         animate={{

@@ -20,7 +20,6 @@ const links = [
   { label: "FAQ", href: "#faq" },
 ];
 
-// Links principais do header
 const mainLinks = ["Início", "Nossa História", "Contato"];
 
 export default function Header() {
@@ -29,7 +28,6 @@ export default function Header() {
 
   const extraLinks = links.filter((l) => !mainLinks.includes(l.label));
 
-  // Variants para animação do header
   const headerVariants = {
     hidden: { y: -50, opacity: 0 },
     visible: { y: 0, opacity: 1 },
@@ -50,13 +48,12 @@ export default function Header() {
         <nav className="hidden md:flex gap-6 items-center relative">
           <NavLinks links={links.filter((l) => mainLinks.includes(l.label))} />
 
-          {/* Dropdown Mais */}
           <div
             className="relative"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <button className="flex items-center gap-1 text-gray-200 font-medium px-3 py-1 hover:text-[#C8F904] focus:outline-none focus:ring-2 focus:ring-[#C8F904] rounded transition-colors">
+            <button className="flex items-center gap-1 text-gray-200 font-medium px-3 py-1 hover:text-[#C8F904] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8F904] rounded transition-colors">
               Mais <ChevronDown className="w-4 h-4" />
             </button>
 
@@ -96,7 +93,7 @@ export default function Header() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C8F904] rounded"
+          className="md:hidden text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8F904] rounded"
           aria-label="Abrir menu"
           onClick={() => setMenuOpen(true)}
         >
@@ -115,17 +112,15 @@ export default function Header() {
             className="md:hidden absolute top-full left-0 w-full bg-[#423E37] shadow-lg z-40"
           >
             <div className="flex flex-col h-[calc(100vh-64px)] p-6">
-              {/* Botão de fechar */}
               <div className="flex justify-end mb-4">
                 <button
-                  className="text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C8F904] rounded"
+                  className="text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8F904] rounded"
                   onClick={() => setMenuOpen(false)}
                 >
                   <X size={28} />
                 </button>
               </div>
 
-              {/* Links empilhados */}
               <div className="flex-1 flex flex-col gap-2 overflow-y-auto">
                 {links.map((link) => (
                   <button
@@ -146,7 +141,6 @@ export default function Header() {
                 ))}
               </div>
 
-              {/* Botão de login fixo no final */}
               <div className="mt-4">
                 <LoginButton />
               </div>

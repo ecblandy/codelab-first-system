@@ -83,9 +83,9 @@ export default function TeamSection() {
                 {member.description}
               </p>
 
-              {/* Tags */}
+              {/* Tags: mostUsedTechs */}
               <div className="flex gap-2 mt-4 flex-wrap justify-center">
-                {member.stacks?.map((tag, i) => (
+                {member.mostUsedTechs?.map((tech, i) => (
                   <span
                     key={i}
                     className={`px-3 py-1 rounded-full text-sm ${
@@ -94,7 +94,7 @@ export default function TeamSection() {
                         : "bg-[#C8F904]/30 text-[#F5F5F5]"
                     }`}
                   >
-                    {tag}
+                    {tech}
                   </span>
                 ))}
               </div>

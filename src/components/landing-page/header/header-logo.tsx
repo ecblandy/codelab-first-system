@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeaderLogo() {
   return (
-    <a href="#hero" className="flex items-center">
+    <Link href="/" className="flex items-center">
       <Image
         src="/assets/images/logo-codelab.svg"
         alt="Logo Codelab"
@@ -10,6 +11,6 @@ export default function HeaderLogo() {
         height={40}
         priority
       />
-    </a>
+    </Link>
   );
 }

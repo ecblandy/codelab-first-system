@@ -2,56 +2,28 @@
 
 import { TeamMember } from "@/data/team-members";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaDocker, FaGithub } from "react-icons/fa";
-import {
-  SiTypescript,
-  SiTailwindcss,
-  SiNextdotjs,
-  SiFigma,
-  SiAdobephotoshop,
-  SiAdobeillustrator,
-} from "react-icons/si";
 
 interface Props {
   member: TeamMember;
 }
 
 export default function TechsSection({ member }: Props) {
-  if ((!member.stacks || member.stacks.length === 0) && !member.experience)
-    return null;
+  if (!member.experience && !member.mostUsedTechs) return null;
 
-  // Mapeamento de nomes de tech para ícones
-  const iconMap: Record<string, React.ReactNode> = {
-    React: <FaReact size={22} className="text-[#C8F904]" />,
-    "Next.js": <SiNextdotjs size={22} className="text-[#C8F904] " />,
-    TypeScript: <SiTypescript size={22} className="text-[#C8F904]" />,
-    "Tailwind CSS": <SiTailwindcss size={22} className="text-[#C8F904]" />,
-    Docker: <FaDocker size={22} className="text-[#C8F904]" />,
-    NodeJS: <FaNodeJs size={22} className="text-[#C8F904]" />,
-    GitHub: <FaGithub size={22} className="text-[#C8F904] " />,
-    Figma: <SiFigma size={22} className="text-[#C8F904]" />,
-    "Adobe Photoshop": (
-      <SiAdobephotoshop size={22} className="text-text-[#C8F904]" />
-    ),
-    "Adobe Illustrator": (
-      <SiAdobeillustrator size={22} className="text-text-[#C8F904]" />
-    ),
-  };
+  // Coletar todas as stacks de todas as experiências
+  const allStacks: string[] = [];
 
-  // Coletar todas as stacks das experiências
-  const allStacks: { name: string; experience?: string }[] = [];
-
-  member.experience.forEach((exp) => {
-    exp.stacks?.forEach((stack) => {
-      allStacks.push({ name: stack, experience: exp.period });
+  member.experience?.forEach((exp) => {
+    Object.values(exp.stacks || {}).forEach((stackArray) => {
+      stackArray?.forEach((stack) => {
+        if (!allStacks.includes(stack)) allStacks.push(stack);
+      });
     });
   });
 
-  // Adicionar stacks principais do membro que não estão nas experiências
-  member.stacks?.forEach((stack) => {
-    if (!allStacks.some((s) => s.name === stack)) {
-      allStacks.push({ name: stack });
-    }
+  // Adicionar as mais usadas (mostUsedTechs)
+  member.mostUsedTechs?.forEach((tech) => {
+    if (!allStacks.includes(tech)) allStacks.push(tech);
   });
 
   return (
@@ -64,6 +36,7 @@ export default function TechsSection({ member }: Props) {
       <h3 className="text-2xl font-bold text-[#2C2C2C] mb-6">
         Tecnologias & Experiência
       </h3>
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allStacks.map((tech, idx) => (
           <motion.div
@@ -73,17 +46,10 @@ export default function TechsSection({ member }: Props) {
             className="bg-[#2C2C2C] flex items-center gap-3 p-4 rounded-xl shadow-md hover:shadow-xl transition-shadow"
           >
             <div className="shrink-0">
-              {iconMap[tech.name] || (
-                <span className="text-[#C8F904] font-semibold">
-                  {tech.name[0]}
-                </span>
-              )}
+              <span className="text-[#C8F904] font-semibold">{tech[0]}</span>
             </div>
             <div>
-              <p className="text-gray-100 font-semibold">{tech.name}</p>
-              {tech.experience && (
-                <p className="text-[#C8F904]/60 text-sm">{tech.experience}</p>
-              )}
+              <p className="text-gray-100 font-semibold">{tech}</p>
             </div>
           </motion.div>
         ))}

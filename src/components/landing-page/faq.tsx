@@ -39,7 +39,10 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative bg-[#F5F5F5] text-[#1A1A1A] py-24 px-6 overflow-hidden">
+    <section
+      id="faq"
+      className="relative bg-[#F5F5F5] text-[#1A1A1A] py-24 px-6 overflow-hidden"
+    >
       <div className="max-w-4xl mx-auto text-center mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

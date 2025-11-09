@@ -44,7 +44,10 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-[#1A1A1A] text-white py-24 px-6 overflow-hidden">
+    <section
+      id="services"
+      className="relative bg-[#1A1A1A] text-white py-24 px-6 overflow-hidden"
+    >
       {/* Animação de fundo */}
       <motion.div
         animate={{

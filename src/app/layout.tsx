@@ -4,23 +4,37 @@ import Header from "@/components/landing-page/header/header";
 import Footer from "@/components/landing-page/footer";
 
 export const metadata: Metadata = {
-  title: "Codelab - Transformamos ideias em produtos digitais",
+  metadataBase: new URL("https://codelab.services"),
+  title: {
+    default: "Codelab - Transformamos ideias em produtos digitais",
+    template: "%s | Codelab",
+  },
   description:
-    "Codelab é uma agência que transforma ideias em soluções digitais eficientes e inovadoras.",
+    "A Codelab é uma agência especializada em desenvolvimento web, sistemas e produtos digitais. Transformamos ideias em soluções modernas e escaláveis.",
   keywords: [
     "Codelab",
     "Agência Digital",
-    "Desenvolvimento de Software",
+    "Desenvolvimento Web",
+    "Software sob medida",
     "Frontend",
-    "Inovação",
+    "Next.js",
+    "React",
+    "Inovação Tecnológica",
+    "Criação de Sites",
+    "Soluções Digitais",
   ],
-  authors: [{ name: "Codelab", url: "https://codelab.com.br" }],
+  authors: [{ name: "Codelab", url: "https://codelab.services" }],
+  creator: "Codelab",
+  publisher: "Codelab",
+  alternates: {
+    canonical: "https://codelab.services",
+  },
   openGraph: {
     type: "website",
-    url: "https://codelab.com.br",
+    url: "https://codelab.services",
     title: "Codelab - Transformamos ideias em produtos digitais",
     description:
-      "Codelab é uma agência que transforma ideias em soluções digitais eficientes e inovadoras.",
+      "A Codelab cria soluções digitais inovadoras para empresas e empreendedores. Websites, sistemas e plataformas que geram resultados.",
     siteName: "Codelab",
     images: [
       {
@@ -31,6 +45,32 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@codelab",
+    title: "Codelab - Transformamos ideias em produtos digitais",
+    description:
+      "Codelab é uma agência de tecnologia que transforma ideias em produtos digitais inovadores.",
+    images: ["/assets/images/logo-codelab.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/assets/images/favi.png",
+    shortcut: "/assets/images/favi.png",
+    apple: "/assets/images/favi.png",
+  },
+  category: "Tecnologia",
+  applicationName: "Codelab",
 };
 
 export default function RootLayout({
@@ -40,7 +80,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`antialiased`}>
+      <body className="antialiased">
         <Header />
         {children}
         <Footer />

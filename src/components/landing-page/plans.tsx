@@ -47,7 +47,10 @@ const plans = [
 
 export default function PlansSection() {
   return (
-    <section className="relative bg-[#C8F904] text-[#1A1A1A] py-24 px-6 overflow-hidden">
+    <section
+      id="plans"
+      className="relative bg-[#C8F904] text-[#1A1A1A] py-24 px-6 overflow-hidden"
+    >
       {/* Fundo animado sutil */}
       <motion.div
         animate={{

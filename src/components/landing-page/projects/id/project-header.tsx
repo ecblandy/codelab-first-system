@@ -23,6 +23,12 @@ export function ProjectHeader({
       </h1>
       <p className="text-gray-400 italic mb-4">{type}</p>
       <p className="text-gray-300 leading-relaxed">{description}</p>
+
+      {/* Observação sobre telas parciais */}
+      <p className="text-gray-500 italic mt-4 text-sm">
+        Observação: esta página contém apenas algumas telas. Para ver o projeto
+        completo, consulte o Figma.
+      </p>
     </motion.div>
   );
 }

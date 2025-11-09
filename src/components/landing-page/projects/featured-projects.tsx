@@ -37,6 +37,7 @@ export default function FeaturedProjects() {
 
   return (
     <motion.section
+      id="projects"
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}

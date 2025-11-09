@@ -51,7 +51,7 @@ const cardVariants = {
 
 export default function HistorySection() {
   return (
-    <section id="history" className="relative bg-[#F5F5F5] py-24 px-6 md:px-16">
+    <section id="about" className="relative bg-[#F5F5F5] py-24 px-6 md:px-16">
       {/* Cabeçalho */}
       <div className="text-center mb-16">
         <motion.h2
